@@ -147,7 +147,7 @@ class BaseRobotEnv(GoalEnv):
         terminated = self.compute_terminated(obs["achieved_goal"], self.goal, info)
         truncated = self.compute_truncated(obs["achieved_goal"], self.goal, info)
 
-        reward = self.compute_reward(obs["achieved_goal"], self.goal, info)
+        reward = self.compute_reward(obs["achieved_goal"], self.goal, info, action)
 
         return obs, reward, terminated, truncated, info
 

@@ -377,7 +377,8 @@ class MazeEnv(GoalEnv):
     ) -> float:
         distance = np.linalg.norm(achieved_goal - desired_goal, axis=-1)
         if self.reward_type == "dense":
-            return np.exp(-distance)
+            # return np.exp(-distance) #changing this to actually follow the discription in the documentation
+            return -distance
         elif self.reward_type == "sparse":
             return (distance <= 0.45).astype(np.float64)
 

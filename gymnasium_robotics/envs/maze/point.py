@@ -26,6 +26,7 @@ class PointEnv(MujocoEnv):
             "human",
             "rgb_array",
             "depth_array",
+            "rgbd_tuple",  # doesn"t actually support this but gymnasium throws an error if it's not here
         ],
         "render_fps": 100,
     }

@@ -388,7 +388,7 @@ class MazeEnv(GoalEnv):
         elif self.reward_type == "adverse":
             sparse_reward = (distance <= 0.45).astype(np.float64)
             action_cost = np.sum(np.square(action))
-            return sparse_reward - 0.5 * action_cost
+            return sparse_reward - 0.1 * action_cost
 
     def compute_terminated(
         self, achieved_goal: np.ndarray, desired_goal: np.ndarray, info

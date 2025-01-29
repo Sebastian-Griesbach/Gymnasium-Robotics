@@ -309,6 +309,7 @@ class PointMazeEnv(MazeEnv, EzPickle):
             "human",
             "rgb_array",
             "depth_array",
+            "rgbd_tuple",  # doesn"t actually support this but gymnasium throws an error if it's not here
         ],
         "render_fps": 50,
     }
@@ -393,7 +394,7 @@ class PointMazeEnv(MazeEnv, EzPickle):
         obs, _, _, _, info = self.point_env.step(action)
         obs_dict = self._get_obs(obs)
 
-        reward = self.compute_reward(obs_dict["achieved_goal"], self.goal, info)
+        reward = self.compute_reward(obs_dict["achieved_goal"], self.goal, info, action)
         terminated = self.compute_terminated(obs_dict["achieved_goal"], self.goal, info)
         truncated = self.compute_truncated(obs_dict["achieved_goal"], self.goal, info)
         info["success"] = bool(
